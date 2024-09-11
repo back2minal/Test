@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RIASEC Wizard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /*body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 800px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+            /*background-image:url(bg2.jpg);*/
+            /*padding-top: 20px;
+        }*/
+        body {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#29f498+0,0ab3e4+99 */
+            /* background: linear-gradient(to bottom, rgba(41,244,152,1) 0%,rgba(10,179,228,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            display: none; /* Hide all questions by default */
+        }
+
+        .current-question {
+            display: block; /* Display only the current question */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .start {
+            margin: 40px 20px 40px 40px;
+            color:red;
+        }
+
+      
+        /* CSS */
+        .button-50 {
+            appearance: button;
+            background-color: #046a38;
+            background-image: none;
+            border: 1px solid #000;
+            border-radius: 4px;
+            box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin: 0 5px 10px 0;
+            overflow: visible;
+            padding: 12px 40px;
+            text-align: center;
+            text-transform: none;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-50:focus {
+            text-decoration: none;
+        }
+
+        .button-50:hover {
+            text-decoration: none;
+        }
+
+        .button-50:active {
+            box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+            outline: 0;
+        }
+
+        .button-50:not([disabled]):active {
+            box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+            transform: translate(2px, 2px);
+        }
+
+        @media (min-width: 768px) {
+            .button-50 {
+                padding: 12px 50px;
+            }
+        }
+        .yesimg, .noimg {
+            width: 70px;
+            height: 70px;
+        }
+
+
+
+        .wizard {
+           /*background-color: #046a38;*/
+             background-image: url(tribal_bg.jpg);
+        }
+
+        .top_row {
+            background-color: rgba(4, 106, 56, 1);
+            padding: 5px 0;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo_area {
+            display: block;
+            padding: 10px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .logo_row {
+            position: relative;
+            z-index: 1;
+            /* padding: 15px 0 20px 0; */
+            display: inline-block;
+            width: 100%;
+        }
+        .logo_l {
+            float: left;
+           
+            margin: 13px 0 0 15px;
+        }
+        .logo_r {
+            float: right;
+            margin: 0 13px 0 15px;
+        }
+
+        .imglogo{
+            max-width:100px;
+            max-height:100px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        ul{
+            text-align:left;
+        }
+
+        .btnopt{
+            margin-top:25px;
+        }
+        #questCover h5{
+		margin:40px 20px 40px 40px;
+		}
+    </style>
+
+</head>
+<body class="min-vh-100">
+    <div class="top_row">
+        <div class="wrapper">
+            <div class="top_row_listing">
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="logo_area">
+                    <!--logo-row-->
+                    <div class="logo_row">
+                        <div class="wrapper">
+                            <div class="logo_l">
+                                <a href="\"><img src="adivasi-1.jpg" alt="" class="img-fluid imglogo"></a>
+                                <a href="\">
+                                    <img src="eklavya-kushal-logo.png" alt="" class="img-fluid imglogo">
+                                </a>
+                            </div>
+                            <div class="logo_r">
+                                <a href="\"><img src="shabari.jpeg" alt="" class="img-fluid imglogo"></a>
+                              
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-0 wizard">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 card">
+                <div class="card-body">
+                    <h1>RIASEC Test</h1>
+                    <div id="questCover">
+						<h5>
+						The RIASEC test asks questions about your aspirations, activities, skills, and interests in different jobs to help you discover careers and fields of study that are likely to satisfy you.
+						</h5>
+
+                        <h2 class="start"> Which Course is right for you?</h2>
+                        <button class="button-50" id="testStart"> Take the test</button>
+                    </div>
+
+                    <div id="quest" style="display: none";>
+                        <form id="wizardForm">
+                            <!-- Questions start -->
+                            <div class="question current-question" id="question1">
+                                <h3>1. I like to work on cars</h3>
+
+                                <div class="btnopt">
+                                    <label><input type="radio" name="question1" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label> <br />
+                                    <label><input type="radio" name="question1" value="N"><img src="no_ic.jpg" class="noimg" /></label>
+                                </div>
+
+                            </div>
+                            <!-- Example of Question 2 -->
+                            <div class="question" id="question2">
+                                <h3>2. I like to do puzzles</h3>
+                                <div class="btnopt">
+                                    <label><input type="radio" name="question2" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                    <label><input type="radio" name="question2" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                </div>
+                            </div>
+                                <!-- Example of Question 3 -->
+                            <div class="question" id="question3">
+                                <h3>3. I am good at working independently</h3>
+                                <div class="btnopt">
+                                    <label><input type="radio" name="question3" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                    <label><input type="radio" name="question3" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                </div>
+                                </div>
+                                <!-- Example of Question 4 -->
+                                <div class="question" id="question4">
+                                    <h3>4. I like to work in teams</h3>
+                                    <div class="btnopt">
+                                        <label><input type="radio" name="question4" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                        <label><input type="radio" name="question4" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                    </div>
+                                    </div>
+                                    <!-- Example of Question 5 -->
+                                    <div class="question" id="question5">
+                                        <h3>5. I am an ambitious person, I set goals for myself</h3>
+                                        <div class="btnopt">
+                                            <label><input type="radio" name="question5" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                            <label><input type="radio" name="question5" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                        </div>
+                                        </div>
+                                        <!-- Example of Question 6 -->
+                                        <div class="question" id="question6">
+                                            <h3>6. I like to organize things,(files,desks,offices)</h3>
+                                            <div class="btnopt">
+                                                <label><input type="radio" name="question6" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                <label><input type="radio" name="question6" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                            </div>
+                                            </div>
+                                            <!-- Example of Question 7 -->
+                                            <div class="question" id="question7">
+                                                <h3>7. I like to build things</h3>
+                                                <div class="btnopt">
+                                                    <label><input type="radio" name="question7" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                    <label><input type="radio" name="question7" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                </div>
+                                                </div>
+                                                <!-- Example of Question 8 -->
+                                                <div class="question" id="question8">
+                                                    <h3>8. I like to read about art and music</h3>
+                                                    <div class="btnopt">
+                                                        <label><input type="radio" name="question8" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                        <label><input type="radio" name="question8" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Example of Question 9 -->
+                                                    <div class="question" id="question9">
+                                                        <h3>9. I like to have clear instructions to follow</h3>
+                                                        <div class="btnopt">
+                                                            <label><input type="radio" name="question9" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                            <label><input type="radio" name="question9" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                        </div>
+                                                        </div>
+                                                        <!-- Example of Question 10 -->
+                                                        <div class="question" id="question10">
+                                                            <h3>10. I like to try to influence or persuade people</h3>
+                                                            <div class="btnopt">
+                                                                <label><input type="radio" name="question10" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                <label><input type="radio" name="question10" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                            </div>
+                                                            </div>
+                                                            <!-- Example of Question 11 -->
+                                                            <div class="question" id="question11">
+                                                                <h3>11. I like to do experiments</h3>
+                                                                <div class="btnopt">
+                                                                    <label><input type="radio" name="question11" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                    <label><input type="radio" name="question11" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                </div>
+                                                                </div>
+                                                                <!-- Example of Question 12 -->
+                                                                <div class="question" id="question12">
+                                                                    <h3>12. I like to teach or train people</h3>
+                                                                    <div class="btnopt">
+                                                                        <label><input type="radio" name="question12" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                        <label><input type="radio" name="question12" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                    </div>
+                                                                    </div>
+                                                                    <!-- Example of Question 13 -->
+                                                                    <div class="question" id="question13">
+                                                                        <h3>13. I like trying to help people solve their problems</h3>
+                                                                        <div class="btnopt">
+                                                                            <label><input type="radio" name="question13" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                            <label><input type="radio" name="question13" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                        </div>
+                                                                        </div>
+                                                                        <!-- Example of Question 14 -->
+                                                                        <div class="question" id="question14">
+                                                                            <h3>14. I like to take care of animals</h3>
+                                                                            <div class="btnopt">
+                                                                                <label><input type="radio" name="question14" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                <label><input type="radio" name="question14" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                            </div>
+                                                                            </div>
+                                                                            <!-- Example of Question 15 -->
+                                                                            <div class="question" id="question15">
+                                                                                <h3>15. I wouldn't mind working 8 hours per day in an office</h3>
+                                                                                <div class="btnopt">
+                                                                                    <label><input type="radio" name="question15" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question15" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                </div>
+                                                                                <!-- Example of Question 16 -->
+                                                                                <div class="question" id="question16">
+                                                                                    <h3>16. I like selling things</h3>
+                                                                                    <label><input type="radio" name="question16" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question16" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 17 -->
+                                                                                <div class="question" id="question17">
+                                                                                    <h3>17. I enjoy creative writing</h3>
+                                                                                    <label><input type="radio" name="question17" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question17" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 18 -->
+                                                                                <div class="question" id="question18">
+                                                                                    <h3>18. I enjoy science</h3>
+                                                                                    <label><input type="radio" name="question18" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question18" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 19 -->
+                                                                                <div class="question" id="question19">
+                                                                                    <h3>19. I am quick to take on new responsibilities</h3>
+                                                                                    <label><input type="radio" name="question19" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question19" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 20 -->
+                                                                                <div class="question" id="question20">
+                                                                                    <h3>20. I am interested in healing people</h3>
+                                                                                    <label><input type="radio" name="question20" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question20" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 21 -->
+                                                                                <div class="question" id="question21">
+                                                                                    <h3>21. I enjoy trying to figure out how things work</h3>
+                                                                                    <label><input type="radio" name="question21" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question21" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 22 -->
+                                                                                <div class="question" id="question22">
+                                                                                    <h3>22. I like putting things together or assembling things</h3>
+                                                                                    <label><input type="radio" name="question22" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question22" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 23 -->
+                                                                                <div class="question" id="question23">
+                                                                                    <h3>23. I am a creative person</h3>
+                                                                                    <label><input type="radio" name="question23" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question23" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 24 -->
+                                                                                <div class="question" id="question24">
+                                                                                    <h3>24. I pay attention to details</h3>
+                                                                                    <label><input type="radio" name="question24" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question24" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 25 -->
+                                                                                <div class="question" id="question25">
+                                                                                    <h3>25. I like to do filing or typing</h3>
+                                                                                    <label><input type="radio" name="question25" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question25" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 26 -->
+                                                                                <div class="question" id="question26">
+                                                                                    <h3>26. I like to analyze things (problems/situations)</h3>
+                                                                                    <label><input type="radio" name="question26" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question26" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 27 -->
+                                                                                <div class="question" id="question27">
+                                                                                    <h3>27. I like to play instruments or sing</h3>
+                                                                                    <label><input type="radio" name="question27" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question27" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 28 -->
+                                                                                <div class="question" id="question28">
+                                                                                    <h3>28. I enjoy learning about other cultures</h3>
+                                                                                    <label><input type="radio" name="question28" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question28" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 29 -->
+                                                                                <div class="question" id="question29">
+                                                                                    <h3>29. I would like to start my own business</h3>
+                                                                                    <label><input type="radio" name="question29" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question29" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 30 -->
+                                                                                <div class="question" id="question30">
+                                                                                    <h3>30. I like to cook</h3>
+                                                                                    <label><input type="radio" name="question30" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question30" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 31 -->
+                                                                                <div class="question" id="question31">
+                                                                                    <h3>31. I like acting in plays</h3>
+                                                                                    <label><input type="radio" name="question31" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question31" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+
+                                                                                <!-- Example of Question 32 -->
+                                                                                <div class="question" id="question32">
+                                                                                    <h3>32. I am a practical person</h3>
+                                                                                    <label><input type="radio" name="question32" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question32" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 33 -->
+                                                                                <div class="question" id="question33">
+                                                                                    <h3>33. I like working with numbers or charts</h3>
+                                                                                    <label><input type="radio" name="question33" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question33" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 34 -->
+                                                                                <div class="question" id="question34">
+                                                                                    <h3>34. I like to get into discussions about issues</h3>
+                                                                                    <label><input type="radio" name="question34" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question34" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 35 -->
+                                                                                <div class="question" id="question35">
+                                                                                    <h3>35. I am good at keeping records of my work</h3>
+                                                                                    <label><input type="radio" name="question35" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question35" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 36 -->
+                                                                                <div class="question" id="question36">
+                                                                                    <h3>36. I like to lead</h3>
+                                                                                    <label><input type="radio" name="question36" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question36" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 37 -->
+                                                                                <div class="question" id="question37">
+                                                                                    <h3>37. I like working outdoors</h3>
+                                                                                    <label><input type="radio" name="question37" value="R"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question37" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 38 -->
+                                                                                <div class="question" id="question38">
+                                                                                    <h3>38. I would like to work in an office</h3>
+                                                                                    <label><input type="radio" name="question38" value="C"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question38" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 39 -->
+                                                                                <div class="question" id="question39">
+                                                                                    <h3>39. I'm good at math</h3>
+                                                                                    <label><input type="radio" name="question39" value="I"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question39" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 40 -->
+                                                                                <div class="question" id="question40">
+                                                                                    <h3>40. I like helping people</h3>
+                                                                                    <label><input type="radio" name="question40" value="S"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question40" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 41 -->
+                                                                                <div class="question" id="question41">
+                                                                                    <h3>41. I like to draw</h3>
+                                                                                    <label><input type="radio" name="question41" value="A"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question41" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Example of Question 42 -->
+                                                                                <div class="question" id="question42">
+                                                                                    <h3>42. I like to give speeches</h3>
+                                                                                    <label><input type="radio" name="question42" value="E"> <img src="yes_ic.jpg" class="yesimg" /></label>  <br />
+                                                                                    <label><input type="radio" name="question42" value="N"> <img src="no_ic.jpg" class="noimg" /></label>
+                                                                                </div>
+                                                                                <!-- Continue adding questions up to question 42 -->
+                                                                                <!-- Navigation radios -->
+                                                                                <div class="navigation">
+                                                                                    <!-- Previous radio (hidden initially) -->
+                                                                                    <button type="button" id="prevradio" style="display: none;">Previous</button>
+                                                                                </div>
+</form>
+                    </div>
+
+                  
+
+                    <div id="result">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+   
+     
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const questions = document.querySelectorAll('.question');
+            let currentQuestionIndex = 0;
+            const totalQuestions = questions.length;
+            const prevradio = document.getElementById('prevradio');
+            const rslt = document.getElementById('result');
+            const btntest = document.getElementById('testStart');
+            const questCover = document.getElementById('questCover');
+            const quest = document.getElementById('quest');
+            
+            questCover
+            let yesValues = {};
+            // Function to display the current question
+            function showQuestion(index) {
+                // Hide all questions
+                questions.forEach(function (question) {
+                    question.classList.remove('current-question');
+                });
+                // Show the current question
+                questions[index].classList.add('current-question');
+
+                // Manage display of navigation radios
+                if (index === 0) {
+                    prevradio.style.display = 'none';
+                } else {
+                    prevradio.style.display = 'none';
+                }
+            }
+
+            // Initial display of the first question
+            showQuestion(currentQuestionIndex);
+
+            // Event listener for radio radio change
+            questions.forEach(function (question, index) {
+                const radioInputs = question.querySelectorAll('input[type="radio"]');
+                radioInputs.forEach(function (input) {
+                    input.addEventListener('change', function () {
+                        const selectedOption = question.querySelector('input[name^="question"]:checked');
+                        if (selectedOption) {
+                            // Store the selected value (if needed)
+                            // Example of storing values:
+                            const questionNumber = index + 1;
+                            yesValues[questionNumber] = selectedOption.value;
+
+
+
+                            currentQuestionIndex++;
+                            if (currentQuestionIndex < totalQuestions) {
+                                showQuestion(currentQuestionIndex);
+                            } else {
+                                submitForm();
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Event listener for previous radio (if needed)
+
+            prevradio.addEventListener('click', function () {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            });
+
+            btntest.addEventListener('click', function () {
+                questCover.style.display = 'none';
+                quest.style.display = 'inline-block';
+            });
+
+            // Function to submit the form (if needed)
+            function submitForm() {
+                // Example of form submission or result calculation:
+                alert('You have completed the wizard!'); // Placeholder
+                const counts = {
+                    'R': 0,
+                    'I': 0,
+                    'A': 0,
+                    'S': 0,
+                    'E': 0,
+                    'C': 0
+                };
+
+                for (const key in yesValues) {
+                    const value = yesValues[key];
+                    counts[value]++;
+                }
+
+                // Sort counts in descending order
+                const sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+                // Display the top three values
+                let result = '';
+                for (let i = 0; i < 3; i++) {
+                    result += ` ${getOccupation(sortedCounts[i][0])}<br>`;
+                }
+
+                // Display the result
+                const frm = document.getElementById('wizardForm');
+                frm.style.display = 'none';
+                rslt.innerHTML += `<h2>Result:</h2>${result}`;
+            }
+
+            function getOccupation(code) {
+                switch (code) {
+                    case 'R':
+                        return '<div class="row"> <p>You are good at mechanical and athletic jobs. Skill course suggestions for you are: </p> <div class="col"> <img src="Realistic.jpg"/> </div> <div class="col"> <ul><li>Construction Laboratory & Field Technician</li><li>Assistant Electrician</li><li>Surveyor</li><li>Automotive Maintenance Technician - Electrical</li><li>Automotive Sales Assistant</li><li>Electric Vehicle Assembly Technician</li></ul>  </div> </div>';
+                    case 'I':
+                        return ' <div class="row"> <p>You are good at watching, learning, analysing and solving problems. Skill course suggestions for you are:</p> <div class="col"> <img src="Investigative.jpg"/></div> <div class="col"><ul><li>Web Developer</li><li>Software Developer-IT Services</li><li>Analyst Security Operations Centre</li><li>Security Analyst</li><li>Software Vulnerability/Penetration Tester</li><li>IoT - Software Analyst</li></ul>  </div> </div>';
+                    case 'A':
+                        return ' <div class="row"> <p>You like to work in unstructured situations where you can use your creativity. Skill course suggestions for you are: </p> <div class="col"> <img src="Artistic.jpg"/></div> <div class="col"><ul><li>Animation Director</li><li>Digital Marketing Manager</li><li>Music Programmer</li><li>Prosthetic Artist</li><li>Search Engine Optimization Executive</li><li>Assistant Beauty Therapist</li><li>Yoga Instructor (B&W)</li><li>Professional Makeup Artist </li></ul> </div> </div>';
+                    case 'S':
+                        return ' <div class="row"> <p>You like to work with other people, rather than things. Skill course suggestions for you are:</p> <div class="col"> <img src="Social.jpg"/></div> <div class="col"><ul><li>Emergency Medical Technician-Basic</li><li>General Duty Assistant </li><li>Home Health Aide     </li><li>Geriatric Care Assistant</li><li>Food and Beverage Service Manager</li><li>Guest Service Assosciate (Front Office)</li><li>Camping & Trekking Guide</li><li>Retail Sales Associate </li> <li>Customer Care Executive </li></ul>  </div> </div>';
+                    case 'E':
+                        return ' <div class="row"> <p>You like to work with others and enjoy persuading and performing. Skill course suggestions for you are:</p>  <div class="col"> <img src="Enterprising.jpg"/></div> <div class="col"><ul><li>Assistant Beauty & Wellness Consultant</li><li>Sales Associate - Direct Channel</li><li>Field Technician Computing and Peripherals</li><li>Fashion Designer</li><li>CCTV Installation Technician</li><li>Organic Grower</li><li>Mushroom Grower (Entrepreneur)</li><li>Vermicompost Producer </li> <li>Mutual Fund Distributor</li></ul> </div> </div>';
+                    case 'C':
+                        return ' <div class="row"><p>You are very detail oriented, organized and like to work with data. Skill course suggestions for you are: </p> <div class="col"> <img src="Conventional.jpg"/></div> <div class="col"><ul><li>AI - Data Quality Analyst</li><li>MIS Data Analyst -Financial Services</li><li>Database Administrator</li><li>AI & ML - Jr. Telecom Data Analyst</li><li>Credit Processing Officer</li><li>Embedded Software Engineer</li></ul>  </div> </div>';
+                    default:
+                        return '';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
